@@ -1,8 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // https://nuxt.com/modules
   modules: [
     '@nuxthub/core',
     '@nuxt/eslint',
@@ -17,13 +15,14 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
 
-  // https://devtools.nuxt.com
-
-  // Env variables - https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
   runtimeConfig: {
     public: {
-      // Can be overridden by NUXT_PUBLIC_HELLO_TEXT environment variable
-      helloText: 'Hello from the Edge 👋'
+      vapiApiKey: process.env.NUXT_PUBLIC_VAPI_API_KEY,
+      vapiWorkflowId: process.env.NUXT_PUBLIC_VAPI_WORKFLOW_ID
+    },
+    auth: {
+      betterAuthSecret: process.env.BETTER_AUTH_SECRET,
+      betterAuthUrl: process.env.BETTER_AUTH_URL
     }
   },
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
