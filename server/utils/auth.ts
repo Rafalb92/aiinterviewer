@@ -1,13 +1,12 @@
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import * as schema from '../database/schema'
-
-const db = hubDatabase()
+import { useDrizzle } from './drizzle'
 
 export const auth = betterAuth({
-  database: drizzleAdapter(db, {
+  database: drizzleAdapter(useDrizzle(), {
     provider: 'sqlite',
-    schema
+    schema: { ...schema }
   }),
   emailAndPassword: { enabled: true }
 })

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt'
   ],
   devtools: { enabled: true },
-  css: ['~/assets/css/tailwind.css', '~/assets/css/magic-pattern.css'],
+  css: ['@/assets/css/tailwind.css', '@/assets/css/magic-pattern.css'],
   vite: {
     plugins: [tailwindcss()]
   },
