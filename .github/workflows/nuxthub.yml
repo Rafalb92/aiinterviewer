@@ -3,7 +3,7 @@ on: push
 
 jobs:
   deploy:
-    name: 'Deploy to NuxtHub'
+    name: "Deploy to NuxtHub"
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
@@ -31,11 +31,10 @@ jobs:
         run: pnpx nuxthub@latest ensure
 
       - name: Build application
-
         run: pnpm build
 
       - name: Deploy to NuxtHub
         uses: nuxt-hub/action@v1
         id: deploy
         with:
-          project-key: ai-interview-n68a
+          project-key: aiinterviewer-23sc
