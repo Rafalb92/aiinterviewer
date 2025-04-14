@@ -1,12 +1,20 @@
 import { drizzle } from 'drizzle-orm/d1'
-import * as schema from '../database/schema'
-
-export { sql, eq, and, or } from 'drizzle-orm'
-
-export const tables = schema
+import {
+  account,
+  session,
+  user,
+  interview,
+  verification
+} from '~~/server/database/schema'
 
 export function useDrizzle() {
-  return drizzle(hubDatabase(), { schema })
+  return drizzle(hubDatabase(), {
+    schema: {
+      account,
+      session,
+      user,
+      interview,
+      verification
+    }
+  })
 }
-
-export type User = typeof schema.user.$inferSelect

@@ -5,17 +5,18 @@
     </h1>
     <Separator />
     <div class="size-full flex items-center justify-center">
-      <!-- <AiAgent
+      <AiAgent
         :user-name="session?.user.name!"
         :user-id="session?.user.id!"
         type="generate"
-      /> -->
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { authClient } from '~/lib/auth-client'
+import AiAgent from '@/components/ai/agent.vue'
 
 definePageMeta({
   layout: 'protected'
