@@ -20,6 +20,8 @@
 </template>
 
 <script lang="ts" setup>
+import Presentation from '@/components/home/presentation.vue'
+
 definePageMeta({
   layout: 'default'
 })

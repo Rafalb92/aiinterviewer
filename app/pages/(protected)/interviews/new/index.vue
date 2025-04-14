@@ -16,6 +16,7 @@
 
 <script lang="ts" setup>
 import { authClient } from '~/lib/auth-client'
+import AiAgent from '@/components/ai/agent.vue'
 
 definePageMeta({
   layout: 'protected'
