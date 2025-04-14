@@ -89,7 +89,7 @@
 
 <script lang="ts" setup>
 import { toTypedSchema } from '@vee-validate/zod'
-import * as z from 'zod'
+import { z } from 'zod'
 import { toast } from 'vue-sonner'
 import { useForm } from 'vee-validate'
 import {

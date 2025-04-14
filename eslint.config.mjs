@@ -9,7 +9,8 @@ export default withNuxt({
     'vue/multi-word-component-names': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     '@stylistic/arrow-parens': 'off',
-    'vue/operator-linebreak': 'off'
+    'vue/operator-linebreak': 'off',
+    '@stylistic/quote-props': 'off'
   }
 })
 // Your custom configs here

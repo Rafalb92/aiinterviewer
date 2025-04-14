@@ -21,6 +21,7 @@ definePageMeta({
   layout: 'protected'
 })
 const { data: session } = await authClient.useSession(useFetch)
+
 onMounted(() => {
   if (!session.value) {
     navigateTo('/sign-in')
