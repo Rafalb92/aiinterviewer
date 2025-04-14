@@ -1,5 +1,23 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
 
+export const interview = sqliteTable('interview', {
+  id: text('id').primaryKey(),
+  role: text('role', { enum: ['assistant', 'user', 'system'] }),
+  level: text('level').notNull(),
+  questions: text('questions', { mode: 'json' })
+    .notNull()
+    .$type<string[]>()
+    .default(sql`(json_array())`),
+  techstack: text('techstack', { mode: 'json' })
+    .notNull()
+    .$type<string[]>()
+    .default(sql`(json_array())`),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  userId: text('userId').notNull(),
+  type: text('type').notNull(),
+  finalized: integer('finalized', { mode: 'boolean' })
+})
+
 export const user = sqliteTable('user', {
   id: text('id').primaryKey(),
   name: text('name').notNull(),

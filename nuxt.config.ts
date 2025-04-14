@@ -34,6 +34,21 @@ export default defineNuxtConfig({
     database: true
   },
 
+  app: {
+    head: {
+      title: 'AI Interview - Prepare yourself for next interview'
+    },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
+
+  fonts: {
+    defaults: {
+      weights: [400, 600, 700],
+      styles: ['normal']
+    }
+  },
+
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -43,7 +58,7 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: './components/ui'
+    componentDir: './app/components/ui'
   },
 
   // Development config

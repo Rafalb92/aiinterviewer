@@ -110,6 +110,7 @@ import {
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { authClient } from '~/lib/auth-client'
 
 const isLoading = ref(false)
 
@@ -136,14 +137,56 @@ const form = useForm({
   validationSchema: formSchema
 })
 
+const isLoggedIn = useAuthStatus()
+
 const onSubmit = form.handleSubmit(async (values) => {
   isLoading.value = true
   if (props.type === 'sign-up') {
     console.log(values)
+    const { error } = await authClient.signUp.email({
+      name: values.displayName!,
+      email: values.email,
+      password: values.password
+    })
 
-    toast.success('register')
+    if (error && error.message) {
+      toast.error(error.message)
+      isLoading.value = false
+      return form.resetForm()
+    }
+
+    toast.success(
+      'Successful, Your account has been created. You can now login.'
+    )
+    isLoading.value = false
+
+    await navigateTo('/sign-in')
   } else {
-    toast.success('login')
+    isLoggedIn.value = false
+    try {
+      const { error } = await authClient.signIn.email({
+        email: values.email,
+        password: values.password
+      })
+      if (error && error.message) {
+        toast.error(error.message)
+        isLoading.value = false
+        return form.resetForm()
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message)
+      } else {
+        toast.error('Something went Wrong')
+      }
+      isLoading.value = false
+      return form.resetForm()
+    } finally {
+      isLoggedIn.value = true
+      toast.success('LoggedIn successful.')
+      isLoading.value = false
+      await navigateTo('/dashboard')
+    }
   }
 })
 </script>

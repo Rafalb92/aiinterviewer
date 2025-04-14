@@ -5,14 +5,6 @@ import { useDrizzle } from './drizzle'
 
 let _auth: ReturnType<typeof betterAuth>
 
-// export const auth = betterAuth({
-//   database: drizzleAdapter(useDrizzle(), {
-//     provider: 'sqlite',
-//     schema: { ...schema }
-//   }),
-//   emailAndPassword: { enabled: true }
-// })
-
 export function serverAuth() {
   if (!_auth) {
     _auth = betterAuth({
@@ -21,7 +13,9 @@ export function serverAuth() {
         schema: { ...schema }
       }),
       emailAndPassword: {
-        enabled: true
+        enabled: true,
+        autoSignIn: false,
+        minPasswordLength: 8
       }
     })
   }
