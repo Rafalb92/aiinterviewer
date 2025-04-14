@@ -1,7 +1,13 @@
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import * as schema from '../database/schema'
-import { useDrizzle } from './drizzle'
+import {
+  account,
+  session,
+  user,
+  interview,
+  verification
+} from '~~/server/database/schema'
+import { useDrizzle } from '~~/server/utils/drizzle'
 
 let _auth: ReturnType<typeof betterAuth>
 
@@ -10,7 +16,13 @@ export function serverAuth() {
     _auth = betterAuth({
       database: drizzleAdapter(useDrizzle(), {
         provider: 'sqlite',
-        schema: { ...schema }
+        schema: {
+          account,
+          session,
+          user,
+          interview,
+          verification
+        }
       }),
       emailAndPassword: {
         enabled: true,
