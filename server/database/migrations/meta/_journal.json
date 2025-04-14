@@ -8,6 +8,20 @@
       "when": 1744296691316,
       "tag": "0000_elite_demogoblin",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1744643569351,
+      "tag": "0001_sharp_sunfire",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1744643853545,
+      "tag": "0002_colorful_otto_octavius",
+      "breakpoints": true
     }
   ]
 }

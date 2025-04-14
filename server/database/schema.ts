@@ -4,14 +4,8 @@ export const interview = sqliteTable('interview', {
   id: text('id').primaryKey(),
   role: text('role', { enum: ['assistant', 'user', 'system'] }),
   level: text('level').notNull(),
-  questions: text('questions', { mode: 'json' })
-    .notNull()
-    .$type<string[]>()
-    .default(sql`(json_array())`),
-  techstack: text('techstack', { mode: 'json' })
-    .notNull()
-    .$type<string[]>()
-    .default(sql`(json_array())`),
+  questions: text('questions', { mode: 'json' }),
+  techstack: text('techstack', { mode: 'json' }),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
   userId: text('userId').notNull(),
   type: text('type').notNull(),

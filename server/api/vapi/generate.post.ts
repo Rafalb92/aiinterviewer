@@ -40,7 +40,13 @@ export default defineEventHandler(async (event) => {
 
     // await fbDatabase.collection('interviews').add(interview)
 
-    await db.insert(interview).values(interviewData)
+    await db
+      .insert(interview)
+      .values({
+        ...interviewData,
+        questions: JSON.stringify(interviewData.questions),
+        techstack: JSON.stringify(interviewData.techstack)
+      })
 
     return { success: true, status: 201 }
   } catch (error) {
